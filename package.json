@@ -1,0 +1,13 @@
+{
+    "name": "ozmo",
+    "version": "0.0.1",
+    "description": "Ozmo - gra online HTML5 + socket.io + canvas",
+    "scripts": {
+        "start": "node server/server.js"
+    },
+    "dependencies": {
+        "socket.io": "0.9.x",
+        "express": "3.x",
+        "less-middleware": "*"
+    }
+}
