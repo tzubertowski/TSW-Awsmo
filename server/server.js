@@ -1,43 +1,32 @@
 /*jshint node: true */
+var io = require('socket.io').listen(5050);
+var gamejs = new require('../common/game.js');
+
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var app = express();
 var less = require('less-middleware');
+var osm = express();
 
-app.configure(function () {
-    app.set('port', process.env.PORT || 3000);
-    app.use(express.favicon());
-    app.use(express.logger('dev'));
-    app.use(less({
+// HTTPek stoi //
+osm.configure(function () {
+    osm.set('port', process.env.PORT || 3000);
+    osm.use(express.favicon());
+    osm.use(express.logger('dev'));
+    osm.use(less({
         src: __dirname + '/client',
         compress: true
     }));
-    app.use(express.static(path.join(__dirname, 'client')));
+    osm.use(express.static(path.join(__dirname, 'client')));
 });
 
-var server = http.createServer(app).listen(app.get('port'), function () {
-    console.log("Serwer nasłuchuje na porcie " + app.get('port'));
+var server = http.createServer(osm).listen(osm.get('port'), function () {
+    console.log("Port serwera: " + osm.get('port'));
 });
 
-var io = require('socket.io');
-var socket = io.listen(server);
 
-socket.on('connection', function (client) {
-    'use strict';
-    var username;
+// sockety, tu bedzie inicjalizowana gra
 
-    client.send('Wtaj!');
-    client.send('Podaj nazwę użytkownika: ');
 
-    client.on('message', function (msg) {
-        if (!username) {
-            username = msg;
-            client.send('Witaj ' + username + '!');
-            client.broadcast.emit('message', 'Nowy użytkownik: ' + username);
-            return;
-        }
-        client.broadcast.emit('message', username + ': ' + msg);
-    });
-});
+
 

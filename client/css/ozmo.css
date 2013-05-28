@@ -1,0 +1,118 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Abel, sans-serif;
+  color: #fff;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+	background-image:url('http://i.imgur.com/lENpl7m.png');
+	background-repeat: repeat;
+}
+
+
+#outer #canvas {
+  margin: 10px 0 10px 0;
+  background-color: #000;
+  border-radius: 7px;
+  border: 5px solid #00534e;
+
+          box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+#outer {
+  width: 640px;
+  margin: 0 auto;
+}
+
+#hud {
+margin-top:10px;
+margin-left:10px;
+}
+
+#fi{
+float:left;
+}
+
+button {
+
+  vertical-align: middle;
+  border: 0;
+  text-align: center;
+  font-size: 30px;
+  padding: 15px;
+  width: 100%;
+  border-radius: 7px;
+  border: 1px solid #00534e;
+
+          box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+
+}
+#buttons {
+
+  
+}
+
+button {
+  background-color: #fff;
+  background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.35, rgb(191,177,194)),
+		color-stop(0.59, rgb(255,255,255))
+	);
+  color: #116d97;
+  
+          text-shadow: 0 1px 0 #fff;
+  -webkit-text-shadow: 0 1px 0 #fff;
+     -moz-text-shadow: 0 1px 0 #fff;
+
+          box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+
+
+button:active,
+button:focus {
+  outline: 0;
+  color: #fff;
+  background-color: #615c63;
+  background-image: -webkit-gradient(linear, 0 0, 0% 100%,
+                                     from(transparent),
+                                     to(rgba(131, 212, 253, 0.4)));
+
+}
+
+#info {
+	width:10em;
+  margin: 0 auto;
+  text-align:left;
+
+  font-size: 24px;
+  text-shadow: 0 0px 8px #000;
+  color: white;
+}
+
+footer {
+  padding-top: 40px;
+  font-size: 22px;
+  clear: both;
+  margin: 0 auto;
+  width: 640px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+footer a {
+  color: yellow;
+}

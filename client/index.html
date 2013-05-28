@@ -1,1 +1,46 @@
-dsdsd
+<!doctype html>
+<html>
+  <head>
+    <title>Ozmo</title>
+
+    <script src="lib/socket.io.js"></script>
+    <script src="../common/game.js"></script>
+    <link rel="stylesheet" href="css/ozmo.css">
+
+
+  </head>
+  <body>
+
+
+    <div id="outer">
+	  <div id="hud">
+        <div id="buttons">
+          <button id="join">Dołącz</button>
+        </div>
+
+
+      </div>
+      <canvas id="canvas" width="640" height="480"></canvas>
+		<div id="fi">
+	  	        <div id="info">
+          <div>
+            <span id="player-count">0</span> graczy.
+          </div>
+          <div>
+            <span id="observer-count">0</span> obserwujących.
+          </div>
+          <div>
+            <span id="average-lag">0</span> ms.
+          </div>
+        </div>
+	  </div>
+
+    </div>
+
+    <footer style="clear:both;">
+    <p>
+		Projekt zaliczeniowy TSW 2013.
+    </p>
+    </footer>
+  </body>
+</html>
