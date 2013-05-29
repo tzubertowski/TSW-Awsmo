@@ -1,3 +1,4 @@
+(function(exports) {
 var Game = function() {
   this.state = {};
   this.oldState = {};
@@ -45,3 +46,4 @@ var Player = function(params) {
 
   Blob.call(this, params);
 };
+})(typeof global === "undefined" ? window : exports);
