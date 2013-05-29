@@ -1,7 +1,7 @@
 /*jshint node: true */
 var io = require('socket.io').listen(5050);
 var gamejs = new require('./common/game.js');
-
+var level = new require('./level/level.js');
 
 var express = require('express');
 var http = require('http');
@@ -10,6 +10,7 @@ var less = require('less-middleware');
 var osm = express();
 // instancja gry
 var Game = gamejs.Game;
+var game = new Game();
 
 // HTTPek stoi //
 osm.configure(function () {
@@ -27,8 +28,20 @@ var server = http.createServer(osm).listen(osm.get('port'), function () {
     console.log("Port serwera: " + osm.get('port'));
 });
 
+//nowy poziomm generator
+var gen = new level.Generator({
+  width: Game.WIDTH,
+  height: Game.HEIGHT,
+  maxSpeed: 0.2,
+  maxRadius: 13,
+  blobCount: 14
+});
 
+game.load(gen.generate());
 
+// Initialize the game loop
+game.updateEvery(Game.UPDATE_INTERVAL);
+var observerCount = 0;
 
 // sockety, tu bedzie inicjalizowana gra
 io.sockets.on('connection', function(socket) {
@@ -77,17 +90,28 @@ io.sockets.on('connection', function(socket) {
 		if (playerId) {
 		  socket.broadcast.emit('leave', {name: playerId, timeStamp: new Date()});
 	}
-
-
+	});
 
 
 });
+/*
 	// Przy śmierci gracza odłącz od gry.
 	game.on('dead', function(data) {
 		io.sockets.emit('leave', {name: data.id, type: data.type, timeStamp: new Date()});
 	});
-
-});
-
-
+	
+	game.on('victory', function(data) {
+	  console.log('game victory event fired');
+	  io.sockets.emit('victory', {id: data.id});
+	  
+	  game.over();
+	  // restart po loose
+	  setTimeout(function() {
+		// nowy level
+		game.load(gen.generate());
+		// Restart
+		game.updateEvery(Game.UPDATE_INTERVAL);
+	  }, Game.RESTART_DELAY);
+	});
+	*/
 
