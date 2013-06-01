@@ -1,6 +1,6 @@
 {
     "name": "Osmo",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Socket.io, Express i HTML5/Canvas - gra online",
     "scripts": {
         "start": "node server.js"
