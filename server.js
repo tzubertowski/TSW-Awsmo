@@ -1,13 +1,14 @@
-/*jshint node: true */
 var io = require('socket.io').listen(5050);
 var gamejs = new require('./common/game.js');
 var level = new require('./level/level.js');
+
 
 var express = require('express');
 var http = require('http');
 var path = require('path');
 var less = require('less-middleware');
 var osm = express();
+
 // instancja gry
 var Game = gamejs.Game;
 var game = new Game();
@@ -38,8 +39,7 @@ var gen = new level.Generator({
 });
 
 game.load(gen.generate());
-
-// Initialize the game loop
+//update co:
 game.updateEvery(Game.UPDATE_INTERVAL);
 var observerCount = 0;
 
@@ -82,7 +82,7 @@ io.sockets.on('connection', function(socket) {
             // Nie pozwalaj na te same nazwy graczy
             return;
         }
-        if (game.getPlayerCount() >= 4) {
+        if (game.getPlayerMeternumber() >= 4) {
             //liczba max graczy.
             return;
         }
@@ -123,26 +123,23 @@ io.sockets.on('connection', function(socket) {
             observerCount: observerCount
         });
     }, 2000);
-
-
 });
- 
- // Przy śmierci gracza odłącz od gry.
- game.on('dead', function(data) {
- io.sockets.emit('leave', {name: data.id, type: data.type, timeStamp: new Date()});
- });
+
+// Przy śmierci gracza odłącz od gry.
+game.on('dead', function(data) {
+    io.sockets.emit('leave', {name: data.id, type: data.type, timeStamp: new Date()});
+});
 
 // Gdy ktoś wygra - resetuj klienty
 game.on('victory', function(data) {
-    console.log('game victory event fired');
+    console.log('Ktoś wygrał');
     io.sockets.emit('victory', {id: data.id});
-    // Stop the game.
     game.over();
-    // Wait a bit and then restart.
+    // reset po timeout
     setTimeout(function() {
-        // Load a new level.
+        // reboot generuj mape
         game.load(gen.generate());
-        // Restart the game.
+        // Restart
         game.updateEvery(Game.UPDATE_INTERVAL);
     }, Game.RESTART_DELAY);
 });

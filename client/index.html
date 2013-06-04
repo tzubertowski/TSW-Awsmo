@@ -1,51 +1,47 @@
 <!doctype html>
 <html>
   <head>
-    <title>Ozmo</title>
-
+    <title>0zmo</title>
+    <meta charset="UTF-8">
     <script src="lib/socket.io.js"></script>
-	<script src="lib/smoke.min.js"></script>
+    <script src="render.js"></script>
+    <script src="input.js"></script>
+    <script src="sound.js"></script>
+    <script src="client.js"></script>
+    <script src="lib/smoke.min.js"></script>
     <script src="../common/game.js"></script>
-	
-	<script src="render.js"></script>
-	<script src="client.js"></script>
-    
-	<link rel="stylesheet" href="css/ozmo.css">
 
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Orbitron:900|Abel">
+    <link rel="stylesheet" href="css/ozmo.css">
+    <link rel="stylesheet" href="lib/smoke.css">
 
   </head>
   <body>
 
-
     <div id="outer">
-	  <div id="hud">
-        <div id="buttons">
-          <button id="join">Dołącz</button>
-        </div>
-
-
-      </div>
+      
       <canvas id="canvas" width="640" height="480"></canvas>
-		<div id="fi">
-	  	        <div id="info">
+
+
+      <div id="hud">
+        <div id="buttons">
+          <button id="join">Join</button>
+        </div>
+
+        <div id="info">
           <div>
-            <span id="player-count">0</span> graczy.
+            <span id="player-count">0</span> players.
           </div>
           <div>
-            <span id="observer-count">0</span> obserwujących.
+            <span id="observer-count">0</span> observers.
           </div>
           <div>
-            <span id="average-lag">0</span> ms.
+            <span id="average-lag">0</span> ms lag.
           </div>
         </div>
-	  </div>
-
+      </div>
     </div>
 
-    <footer style="clear:both;">
-    <p>
-		Projekt zaliczeniowy TSW 2013.
-    </p>
-    </footer>
-  </body>
+    
+    </body>
 </html>
