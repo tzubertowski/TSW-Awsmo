@@ -35,7 +35,7 @@ var gen = new level.Generator({
     height: Game.HEIGHT,
     maxSpeed: 0.2,
     maxRadius: 13,
-    blobCount: 14
+    blobCount: 23
 });
 
 game.load(gen.generate());
