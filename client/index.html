@@ -1,47 +1,36 @@
 <!doctype html>
 <html>
-  <head>
-    <title>0zmo</title>
-    <meta charset="UTF-8">
-    <script src="lib/socket.io.js"></script>
-    <script src="render.js"></script>
-    <script src="input.js"></script>
-    <script src="sound.js"></script>
-    <script src="client.js"></script>
-    <script src="lib/smoke.min.js"></script>
-    <script src="../common/game.js"></script>
-
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Orbitron:900|Abel">
-    <link rel="stylesheet" href="css/ozmo.css">
-    <link rel="stylesheet" href="lib/smoke.css">
-
-  </head>
-  <body>
-
-    <div id="outer">
-      
-      <canvas id="canvas" width="640" height="480"></canvas>
+    <head>
+        <title>0zmo</title>
+        <meta charset="UTF-8">
+        <script src="./lib/socket.io.js"></script>
+        <script src="./render.js"></script>
+        <script src="./input.js"></script>
+        <script src="./sound.js"></script>
+        <script src="./client.js"></script>
+        <script src="./lib/smoke.min.js"></script>
+        <script src="./game.js"></script>
+        <script src="./input.js"></script>
+        <link rel="stylesheet" href="css/ozmo.css">
+        <link rel="stylesheet" href="lib/smoke.css">
 
 
-      <div id="hud">
-        <div id="buttons">
-          <button id="join">Join</button>
+    </head>
+    <body>
+        <div id="outer">
+
+            <canvas id="canvas" width="640" height="480"></canvas>
+
+
+            <div id="hud">
+                <div id="buttons">
+                    <button id="polacz">GRAJ</button>
+                </div>
+
+
+            </div>
         </div>
 
-        <div id="info">
-          <div>
-            <span id="player-count">0</span> players.
-          </div>
-          <div>
-            <span id="observer-count">0</span> observers.
-          </div>
-          <div>
-            <span id="average-lag">0</span> ms lag.
-          </div>
-        </div>
-      </div>
-    </div>
 
-    
     </body>
 </html>

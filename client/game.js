@@ -72,7 +72,7 @@
             }
             total += o.r;
         }
-        // kiedy wygrywamy
+        // Victory conditions!
         if (largest.r > total / 2) {
             console.log('Koniec gry!');
             this.callback_('victory', {id: largest.id});
@@ -112,9 +112,9 @@
     Game.prototype.over = function() {
         clearInterval(this.timer);
     };
-    // Dołączanie i wyjście
-    //
-    // gdy dołączy nowy gracz, ustalanie pozycji
+// Dołączanie i wyjście
+//
+// gdy dołączy nowy gracz, ustalanie pozycji
     Game.prototype.join = function(id) {
         var x, y, vx, vy;
         switch (this.getPlayerMeternumber() % 4) {
@@ -156,11 +156,11 @@
         return player.id;
     };
 
-    // gdy player wyjdzie
+// gdy player wyjdzie
     Game.prototype.leave = function(playerId) {
         delete this.state.objects[playerId];
     };
-    //gdy player strzela
+//gdy player strzela
     Game.prototype.shoot = function(id, direction, timeStamp) {
         console.log('Strzał wykonał', this.state.timeStamp - timeStamp, 'ago');
         var player = this.state.objects[id];
@@ -192,9 +192,9 @@
             this.callback_('dead', {id: player.id, type: player.type});
         }
     };
-    // Zapis i odczyt stanu gry
-    //
-    // Zapis do JSON
+// Zapis i odczyt stanu gry
+//
+// Zapis do JSON
     Game.prototype.save = function() {
         var serialized = {
             objects: {},
@@ -209,7 +209,7 @@
         return serialized;
     };
 
-    // Ładowanie gry, JSON
+// Ładowanie gry, JSON
     Game.prototype.load = function(savedState) {
         console.log(savedState.objects);
         var objects = savedState.objects;

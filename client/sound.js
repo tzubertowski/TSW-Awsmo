@@ -1,14 +1,16 @@
 (function(exports) {
 
-var BLOOPS = ['sounds/bloop1.wav', 'sounds/bloop2.wav',
-    'sounds/bloop3.wav', 'sounds/bloop4.wav', 'sounds/bloop5.wav'];
+//var BLOOPS = ['sounds/bloop1.wav', 'sounds/bloop2.wav',
+//    'sounds/bloop3.wav', 'sounds/bloop4.wav', 'sounds/bloop5.wav'];
+var BLOOPS = ['sounds/shot.wav', 'sounds/shot.wav', 'sounds/shot.wav', 'sounds/shot.wav', 'sounds/shot.wav', 'sounds/shot.wav'];
+
 
 function AudioTagSoundManager() {
   this.audio = document.createElement('audio');
   this.soundtrack = document.createElement('audio');
   this.soundtrack.setAttribute('loop', true);
-  this.soundtrack.src = 'sounds/soundtrack.mp3';
-  this.soundtrack.volume = 0.5;
+  this.soundtrack.src = 'sounds/soundtrackvic.mp3';
+  this.soundtrack.volume = 0.6;
 }
 
 AudioTagSoundManager.prototype.playBloop = function() {
@@ -18,6 +20,7 @@ AudioTagSoundManager.prototype.playBloop = function() {
 };
 
 AudioTagSoundManager.prototype.playJoin = function() {
+    this.soundtrack.play();
 };
 
 AudioTagSoundManager.prototype.toggleSoundtrack = function() {

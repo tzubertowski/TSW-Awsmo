@@ -1,4 +1,4 @@
-var io = require('socket.io').listen(5050);
+var io = require('socket.io').listen(5000);
 var gamejs = new require('./common/game.js');
 var level = new require('./level/level.js');
 
@@ -33,9 +33,9 @@ var server = http.createServer(osm).listen(osm.get('port'), function() {
 var gen = new level.Generator({
     width: Game.WIDTH,
     height: Game.HEIGHT,
-    maxSpeed: 0.2,
-    maxRadius: 13,
-    blobCount: 23
+    maxSpeed: 0.3,
+    maxRadius: 11,
+    blobCount: 22
 });
 
 game.load(gen.generate());
@@ -57,19 +57,19 @@ io.sockets.on('connection', function(socket) {
     //strzał
     socket.on('shoot', function(data) {
         console.log('recv shoot', data);
-        // Check that the player is still alive
+        // Jeżeli blob żyje
         if (!game.blobExists(playerId)) {
             return;
         }
-        // Update the game game
+        // Update gry po strzale
         game.shoot(playerId, data.direction);
         data.playerId = playerId;
         data.timeStamp = (new Date()).valueOf();
-        // Broadcast that shot was fired.
+        // Strzał
         io.sockets.emit('shoot', data);
     });
 
-    //state save
+    //state zapisz
     socket.on('state', function(data) {
         socket.emit('state', {
             state: game.save()

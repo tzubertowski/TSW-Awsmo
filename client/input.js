@@ -12,7 +12,7 @@
         });
 
         // JOIN button
-        var join = document.getElementById('join');
+        var join = document.getElementById('polacz');
         join.addEventListener('click', function(e) {
 
             ctx.onjoin.call(ctx, e);

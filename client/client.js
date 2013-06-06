@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    socket = io.connect('http://localhost:5050');
+    socket = io.connect('http://153.19.195.122:5000');
     game = new Game();
     playerId = null;
     totalSkew = 0;
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 gameover(data.id + ' wygrał. Jeszcze raz?');
             }
         } else {
-            gameover('game over. ' + data.id + ' wygrał. Jeszcze raz?');
+            gameover('Przegrałęś. ' + data.id + ' wygrał. Jeszcze raz?');
         }
     });
 
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (yes && playerId) {
                 socket.emit('join', {name: playerId});
             } else {
-                smoke.signal('watching mode');
+                smoke.signal('Tryb obserwatora.');
                 // button rejoin
                 document.querySelector('#join').style.display = 'inline';
                 playerId = null;
