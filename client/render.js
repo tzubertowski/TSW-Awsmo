@@ -1,5 +1,5 @@
 (function(exports) {
-// animacja na podstawie timeoutu
+// animacja
     window.requestAnimFrame = (function() {
         return  window.requestAnimationFrame ||
                 window.webkitRequestAnimationFrame ||

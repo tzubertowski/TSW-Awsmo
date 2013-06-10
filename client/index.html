@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>0zmo</title>
+        <title>Awsmo</title>
         <meta charset="UTF-8">
         <script src="./lib/socket.io.js"></script>
         <script src="./render.js"></script>
@@ -14,23 +14,57 @@
         <link rel="stylesheet" href="css/ozmo.css">
         <link rel="stylesheet" href="lib/smoke.css">
 
+<script>
+        function oproj() {
+            smoke.alert('W grze gracz wciela się w postać pomarańczowej kulki. Strzelając lewym klawiszem myszy nadaje prędkości i kierunku swojej postaci, tracąc przy tym na wielkości. Gracz musi urosnąć do jak największych rozmiarów "pochłaniając" inne kulki.');
 
+    }
+</script>
+<script>
+        function oproje() {
+            smoke.alert('1. Wygrywa gracz posiadający większą część maksymalnego rozmiaru.\n\
+                         2. Możesz pochłaniać inne kulki wpadając na nie.\n\
+                         3. Sterowanie myszą, nadawanie prędkości kulce za pomocą LPM.\n\
+                         4. Kulki większe od ciebie pochłaniają cię, mniejsze są pochłaniane przez ciebie.\n\
+                         5. Uważaj aby nie zabić się zbytnią utratą wielkości.');
+
+    }
+</script>
     </head>
     <body>
-        <div id="outer">
+        <div id="center">
+        <div id="container">
+            <ul id="menu">
+                <li><a href="index.html">Strona Domowa</a>
+  
+                </li>
+                <li><a href="#">O grze</a>
+                    <ul>
+                        <li><a href="#" onClick="javascript:oproj();">O projekcie</a></li>
+                        <li><a href="#" onClick="javascript:oproje();">Zasady gry</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://github.com/tzubertowski/TSW-Awsmo">Repo @Github</a>
+                </li>
 
-            <canvas id="canvas" width="640" height="480"></canvas>
-
-
-            <div id="hud">
-                <div id="buttons">
-                    <button id="polacz">GRAJ</button>
-                </div>
-
-
-            </div>
+            </ul>
         </div>
+    </div>
+    </div>
+    <div id="outer">
+
+        <canvas id="canvas" width="640" height="480"></canvas>
 
 
-    </body>
+        <div id="hud">
+            <div id="buttons">
+                <button id="polacz">GRAJ</button>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</body>
 </html>

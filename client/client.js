@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿document.addEventListener('DOMContentLoaded', function() {
 
-    socket = io.connect('http://153.19.195.122:5000');
+    socket = io.connect('http://prosty-tsw_ozmo.jit.su');
     game = new Game();
     playerId = null;
     totalSkew = 0;
@@ -78,9 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // spekatorzy
         document.getElementById('observer-count').innerText =
-                Math.max(data.observerCount - game.getPlayerMeternumber(), 0);
-        document.getElementById('player-count').innerText = game.getPlayerCount();
-        document.getElementById('average-lag').innerText = Math.abs(updateDelta);
+                Math.max(data.observerCounplayer-countt - game.getPlayerMeternumber(), 0);
+        document.getElementById('player-count').innerText = data.plcount;
+        document.getElementById('average-lag').innerText = updateDelta;
     });
 
 // Przy wygranym
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 gameover(data.id + ' wygrał. Jeszcze raz?');
             }
         } else {
-            gameover('Przegrałęś. ' + data.id + ' wygrał. Jeszcze raz?');
+            gameover('Koniec rozgrywki. Wygrał ' + data.id + '. Jeszcze raz?');
         }
     });
 

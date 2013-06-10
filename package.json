@@ -1,6 +1,6 @@
 {
     "name": "Osmo",
-    "version": "0.0.2",
+    "version": "0.0.2-3",
     "description": "Socket.io, Express i HTML5/Canvas - gra online",
     "scripts": {
         "start": "node server.js"
@@ -9,5 +9,9 @@
         "socket.io": "0.9.x",
         "express": "3.x",
         "less-middleware": "*"
+    },
+    "subdomain": "prosty-tsw_ozmo",
+    "engines": {
+        "node": "0.8.x"
     }
 }

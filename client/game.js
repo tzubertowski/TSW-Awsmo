@@ -72,7 +72,7 @@
             }
             total += o.r;
         }
-        // Victory conditions!
+        // kiedy wygrywamy
         if (largest.r > total / 2) {
             console.log('Koniec gry!');
             this.callback_('victory', {id: largest.id});
@@ -251,7 +251,7 @@
 
     //zmiana xy
     Game.prototype.transferAreas_ = function(o, p, delta) {
-        console.log('deadness', o.id, o.dead, p.id, p.dead);
+       // console.log('deadness', o.id, o.dead, p.id, p.dead);
         if (o.dead || p.dead) {
             return;
         }
@@ -265,7 +265,7 @@
         }
         var overlap = big.overlap(small);
 
-        console.log('overlapping', o.id, p.id, 'by', overlap);
+       // console.log('overlapping', o.id, p.id, 'by', overlap);
         var diff = overlap * Game.TRANSFER_RATE;
         small.transferArea(-diff);
         big.transferArea(diff);

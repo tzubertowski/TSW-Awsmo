@@ -1,4 +1,4 @@
-var io = require('socket.io').listen(5000);
+﻿var io = require('socket.io').listen(3000);
 var gamejs = new require('./common/game.js');
 var level = new require('./level/level.js');
 
@@ -15,13 +15,15 @@ var game = new Game();
 
 // HTTPek stoi //
 osm.configure(function() {
-    osm.set('port', process.env.PORT || 3000);
+
+    osm.set('port', process.env.PORT || 5000);
     osm.use(express.favicon());
     osm.use(express.logger('dev'));
     osm.use(less({
         src: __dirname + '/client',
         compress: true
     }));
+    osm.use(express.favicon(__dirname + '/client/images/favicon.ico'));
     osm.use(express.static(path.join(__dirname, 'client')));
 });
 
@@ -35,14 +37,14 @@ var gen = new level.Generator({
     height: Game.HEIGHT,
     maxSpeed: 0.3,
     maxRadius: 11,
-    blobCount: 22
+    blobCount: 42
 });
 
 game.load(gen.generate());
 //update co:
 game.updateEvery(Game.UPDATE_INTERVAL);
 var observerCount = 0;
-
+var plcount = 0;
 // sockety, tu bedzie inicjalizowana gra
 io.sockets.on('connection', function(socket) {
     observerCount++;
@@ -78,6 +80,7 @@ io.sockets.on('connection', function(socket) {
 
     socket.on('join', function(data) {
         console.log('recv join', data);
+
         if (game.blobExists(data.name)) {
             // Nie pozwalaj na te same nazwy graczy
             return;
@@ -91,6 +94,7 @@ io.sockets.on('connection', function(socket) {
         // Broadcast o dołączeniu klienta
         socket.broadcast.emit('join', data);
         data.isme = true;
+        plcount++;
         socket.emit('join', data);
     });
 
@@ -120,7 +124,8 @@ io.sockets.on('connection', function(socket) {
             timeStamp: (new Date()).valueOf(),
             lastUpdate: game.state.timeStamp,
             updateCount: game.updateCount,
-            observerCount: observerCount
+            observerCount: observerCount,
+            plcount: plcount
         });
     }, 2000);
 });
